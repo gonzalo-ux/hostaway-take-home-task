@@ -17,11 +17,13 @@ Tokens  →  Components  →  Templates
 
 Tokens are invisible contracts. You never see them in the canvas — but every color, every fill, every text color in a component is bound to one. When the token changes, the component updates everywhere. Never override a component's color directly; if you need a different color, the token is wrong, not the component.
 
-Components split into **public** (place these) and **private** (prefixed with `_` — never place these directly). If you find yourself placing a `_Tab.Button` on its own, you're working at the wrong level. Place `Tabs group` and populate the `Tabs slot`.
+Components split into **public** (place these) and **private** (prefixed with `_` — never place these directly). If you find yourself placing a `_Tab.Button` on its own, you're working at the wrong level.
 
 Templates are not frames — they are **components**. Detaching a template to customise it defeats the system. Instead, use the template's exposed props and slots, and compose new sections from existing components beneath it.
 
 ### How to start a new page
+
+> **Example using `Template / Page table`.** The same workflow applies to any template: place it, configure its props to show or hide sections, then populate its slots with the appropriate component instances.
 
 1. **Place `Template / Page table`** from the Components panel. This gives you the full chrome: breadcrumbs, heading, tabs, filters, and a table scaffold.
 2. **Use the Props panel** to toggle what you need: hide `Breadcrumbs` if this is a top-level page, hide `Pagination` if the data is short.
@@ -32,22 +34,31 @@ Templates are not frames — they are **components**. Detaching a template to cu
 
 ### How to extend an existing component
 
-**Adding a new tab option:**
+The general pattern for any slot-driven component: find the slot in the instance (not the master), duplicate an existing child, and update its props. Never re-enter the master component to make per-page edits.
+
+**Example — adding a new tab option to a `Tabs group`:**
 - Open the `Tabs group` instance on your page (not the master component).
 - Click into the `Tabs slot` and duplicate an existing `_Tab.Button`.
 - Change its `Label` prop, set it to `Type=Idle`.
 - Do not increase the slot count beyond what the `Tabs group` container width supports.
 
-**Adding a new table column:**
+**Example — adding a new column to a `Table`:**
 - Click into the `Table slot` inside a `Table` instance.
 - Duplicate an existing `Table.Column`.
 - Update the header label via `_Table.Header.Cell` > `Header cell` text prop.
 - Update cell content inside each `_Table.Cell` via the `Cell label` text prop.
 
-**Changing button label:**
-- Select any `Button` instance. Use the Props panel — find `Label` — change the text there. Do not double-click into the text layer directly. The prop is what controls the value.
+**Example — changing a `Button` label:**
+- Select any `Button` instance. Use the Props panel — find `Label` — change the text there. The prop is what controls the value.
 
 ### How to create a new component (contributing to the library)
+
+The contribution process has two tracks — see [migration-roadmap.md Phase 1](../migration-roadmap.md#phase-1--build-the-infrastructure-weeks-310) for the full model. In brief:
+
+- **Track A (DS-led):** New core components. Full contract before publish — anatomy, slot/prop table, interactive states, variant budget, one do/don't, owner and version. Async review via Figma branch, no meeting required.
+- **Track B (Squad-contributed):** New patterns that compose from existing Core components. DS lead reviews and merges within 48 hours, or returns with specific feedback.
+
+Every contribution runs through the `figma-atomic-audit` tool before merge. DS lead sees a score, not a checklist.
 
 Before building from scratch, check: does the concept already exist as a private `_` part?
 
@@ -61,7 +72,7 @@ Before building from scratch, check: does the concept already exist as a private
 
 Never apply a palette primitive directly to a layer (e.g. don't bind a fill directly to `color/palette/green/500`). Always go through a semantic token (`color/background/primary`). This is what allows theme changes and future dark mode to work without touching components.
 
-When you find a fill that isn't variable-bound (no purple/green diamond in the fill picker), that is a defect. File it or fix it.
+When you find a fill that isn't variable-bound (no purple/green diamond in the fill picker), that is a defect. File it or fix it. Once the automated audit is running (see [migration-roadmap.md Phase 1 — Token pipeline](../migration-roadmap.md#token-pipeline)), a lint rule will catch hardcoded fills automatically on every published component.
 
 ### What's off-limits
 
@@ -91,8 +102,6 @@ color/text/interactive      --color-text-interactive
 color/border/secondary      --color-border-secondary
 color/icon/primary          --color-icon-primary
 ```
-
-> **Note:** There is a consistent typo in the Figma variable names — `backgorund` instead of `background`. Treat all variable names with `background` in CSS, regardless of the Figma typo. This must be corrected in Figma before an automated export runs.
 
 **Full resolved token values for implementation:**
 
@@ -140,6 +149,10 @@ color/icon/primary          --color-icon-primary
 ### Component-to-code mapping
 
 Each Figma component maps to a single code component. Figma props map to component props. Figma slots map to `children` or named slots/render props.
+
+> **Note on design-to-code linking:** The examples below are hand-authored mappings. See [Design-to-code linking](#design-to-code-linking) for the planned approach to making these mappings machine-readable and maintainable.
+
+> **Examples using `Button`, `Tabs group`, `Input field`, `Table`, and `Page header`.** Apply the same prop/slot/style pattern to any component in the inventory.
 
 #### Button
 
@@ -277,9 +290,32 @@ Two font families are in use. Make sure both are loaded:
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 ```
 
+### Design-to-code linking
+
+The hand-authored mappings above will not scale as the component library grows. Two approaches are under consideration to make the Figma → code connection machine-readable:
+
+**Option A — Figma Code Connect**
+Figma's native [Code Connect](https://www.figma.com/developers/code-connect) lets you attach a code snippet or component import directly to a Figma component. When a designer inspects a component in Dev Mode, they see the real import and prop usage instead of autogenerated CSS. This is the preferred path if the engineering stack is React or another framework Code Connect supports, because it requires no custom infrastructure and stays in sync with Figma's own versioning.
+
+**Option B — Custom mapping layer**
+If Code Connect doesn't cover the stack (e.g. a non-supported framework, a proprietary component system, or tooling that needs the mapping at build time), a custom solution would maintain a structured mapping file (e.g. JSON or YAML) that links Figma node IDs to code component paths, prop names, and slot-to-children contracts. This file would be consumed by design-system tooling, Storybook integrations, or AI tools to generate consistent import statements and prop usage without manual lookup.
+
+**Current state:** TBD. The mappings in this section are the source of truth until one of these approaches is implemented. When linking is in place, this section will point to the integration docs instead.
+
+### Contributing a code component
+
+When a Figma component is rebuilt and ready to ship, the engineering side of the contribution follows this checklist — see [migration-roadmap.md Phase 2 — Per-component workflow](../migration-roadmap.md#phase-2--rebuild-and-migrate-weeks-724) for the full process:
+
+1. Engineer reviews the slot/prop contract async before Figma branch merges.
+2. Component ships under a single import path (`@hostaway/ui` or equivalent) — enforced by ESLint from day one. No component-specific ad-hoc imports.
+3. Storybook stories mirror Figma slot examples. Stories are the acceptance criteria for the rebuild — if a slot state isn't in Storybook, it's not done.
+4. Definition of done: "uses DS component, or has a linked note explaining why not."
+5. After merge, mark the old Figma asset Deprecated with "Use X instead" in its description.
+6. Squad validates on one real screen before the old asset is removed.
+
 ### What is not in the system yet
 
-These are known gaps documented in `design-language.md`. Do not implement fallbacks or invent values — flag them as pending design:
+These are known gaps documented in `design-language.md`. Do not implement fallbacks or invent values — flag them as pending design. The [migration-roadmap.md Phase 2 rebuild sequence](../migration-roadmap.md#rebuild-sequence) defines when each layer (atoms → molecules → organisms) is scheduled.
 
 - Error / validation states on Input field
 - Focus styles (keyboard navigation)
@@ -287,7 +323,7 @@ These are known gaps documented in `design-language.md`. Do not implement fallba
 - Hover state on interactive table cells
 - Pagination component internals
 - Filter group component internals
-- Spacing and sizing tokens (use pixel values from design-language.md §2.3 until tokens exist)
+- Spacing and sizing tokens (use pixel values from design-language.md 2.3 until tokens exist)
 
 ---
 
@@ -299,10 +335,10 @@ This section documents how to use `design-language.md` as a reliable input for A
 
 When given a design or implementation task, an AI tool should resolve in this order:
 
-1. **Check the component inventory first** (§3 in design-language.md). If a component exists, use it — do not recreate it.
-2. **Check the slot reference** (§5). If a composition point exists as a slot, populate it — do not wrap components in arbitrary containers.
-3. **Resolve colors through semantic tokens** (§2.2). Never use a hex value directly unless you are defining the token itself. Always go `task → semantic token → hex`.
-4. **Check the Known Gaps list** (§7) before generating. If the task requires something in that list, surface the gap rather than inventing a value.
+1. **Check the component inventory first** (3 in design-language.md). If a component exists, use it — do not recreate it.
+2. **Check the slot reference** (5). If a composition point exists as a slot, populate it — do not wrap components in arbitrary containers.
+3. **Resolve colors through semantic tokens** (2.2). Never use a hex value directly unless you are defining the token itself. Always go `task → semantic token → hex`.
+4. **Check the Known Gaps list** (7) before generating. If the task requires something in that list, surface the gap rather than inventing a value.
 
 ### Component lookup protocol
 
@@ -347,7 +383,7 @@ When generating CSS, a style object, or a design token value:
    input border       → color/border/secondary
    table border       → color/border/tertiary
 
-3. Resolve to hex using the token table in §2.2
+3. Resolve to hex using the token table in 2.2
 ```
 
 ### Typography rules for generation
@@ -363,7 +399,7 @@ Font weight mapping:
   Raleway SemiBold → font-weight: 600  (Button, Tab)
   Raleway Medium   → font-weight: 500  (Input label, Input text)
 
-No text style tokens exist yet → use raw values from §2.4 of design-language.md
+No text style tokens exist yet → use raw values from 2.4 of design-language.md
 ```
 
 ### Slot population rules
@@ -391,10 +427,10 @@ Cells Slot (Table.Column):
 
 ### Assembly pattern for a new page
 
-When asked to generate a new list or data page, use this template:
+When asked to generate a new list or data page, use the appropriate template from the inventory. The example below uses `Template / Page table` — the same slot-populate logic applies to any template.
 
 ```
-Template / Page table
+Template / Page table   ← replace with the matching template for the page type
 ├── title: [page title]
 ├── breadcrumbs: [section > page path]
 ├── tabs: [primary filter options, first selected]
@@ -437,7 +473,7 @@ Avoid:
 
 When an AI tool is asked to design something new that the current system cannot express:
 
-1. **Check §7 (Known Gaps)** — if the gap is listed, the answer is "this is a known TBD, propose a solution to the DS lead rather than inventing one."
+1. **Check 7 (Known Gaps)** — if the gap is listed, the answer is "this is a known TBD, propose a solution to the DS lead rather than inventing one."
 2. **If a new token is needed**, follow the existing naming convention: `color/{category}/{role}` → alias to `color/palette/{family}/{step}`.
 3. **If a new component is needed**, follow the `_Component.Part` / `Component` / `Template` naming tiers, bind all fills to tokens, and document its slot contract.
 4. **Output new components as a proposal** (description + prop table + assembly diagram) rather than silently adding them to the canvas. The contribution process requires review.
@@ -448,9 +484,13 @@ When an AI tool is asked to design something new that the current system cannot 
 
 | Task | Primary reference |
 |---|---|
-| Which color token to use | [design-language.md §2.2](./design-language.md#22-semantic-color-tokens) |
-| What components exist | [design-language.md §3](./design-language.md#3-component-inventory) |
-| How a specific component is assembled | [design-language.md §4](./design-language.md#4-component-specs) |
-| Which slots accept what | [design-language.md §5](./design-language.md#5-slot-reference) |
-| What's not built yet | [design-language.md §7](./design-language.md#7-known-gaps-tbd) |
-| How to extend the system | This file, §2 (Designers) or §3 (AI Tooling) |
+| Which color token to use | [design-language.md 2.2](./design-language.md#22-semantic-color-tokens) |
+| What components exist | [design-language.md 3](./design-language.md#3-component-inventory) |
+| How a specific component is assembled | [design-language.md 4](./design-language.md#4-component-specs) |
+| Which slots accept what | [design-language.md 5](./design-language.md#5-slot-reference) |
+| What's not built yet | [design-language.md 7](./design-language.md#7-known-gaps-tbd) |
+| How to extend the system | This file, Designers or AI Tooling |
+| Contribution process (Figma tracks, review SLAs, audit gate) | [migration-roadmap.md Phase 1](../migration-roadmap.md#phase-1--build-the-infrastructure-weeks-310) |
+| When gaps will be filled (rebuild sequence, migration waves) | [migration-roadmap.md Phase 2](../migration-roadmap.md#phase-2--rebuild-and-migrate-weeks-724) |
+| Token pipeline and lint rules | [migration-roadmap.md Token pipeline](../migration-roadmap.md#token-pipeline) |
+| Success metrics and checkpoints | [migration-roadmap.md Metrics](../migration-roadmap.md#metrics) |

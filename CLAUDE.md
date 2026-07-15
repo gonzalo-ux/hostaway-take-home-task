@@ -1,17 +1,22 @@
 # Hostaway Design System
 
-This repo is a **design system audit and roadmap workspace** — no application code. It contains audit documents, component specs, and a custom Cursor skill for auditing Figma components against atomic design principles.
+This repo is a **design system audit and roadmap workspace** — no application code. It contains audit documents, component specs, and tooling for auditing Figma components against atomic design principles.
 
 ## What's here
 
 | Path | Purpose |
 |---|---|
-| `deliver/` | Deliverables: audit summary, initial roadmap, token map images |
+| `deliver/` | Deliverables: audit summary, initial roadmap |
+| `img/` | Images referenced by audit documents |
 | `deliver/audit-summary.md` | Root-cause analysis of the Untitled UI lift |
 | `deliver/initial-roadmap.md` | 3–6 month transition plan (July–December 2026) |
-| `audits/tabs-audit.md` | Deep-dive spec for Tabs component rebuild |
+| `audits/` | Component deep-dive audit files |
+| `audits/untitled-ui-tabs-audit.md` | Deep-dive spec for Tabs component rebuild |
 | `audits/page-mock-audit.md` | Reference implementation audit (A− pilot — Page header + Table + Filters) |
-| `.cursor/skills/figma-atomic-audit/` | Reusable audit skill for Figma components |
+| `audit-automation/` | Shared reference material for the audit skill |
+| `audit-automation/Figma Atomic Audit — Reference.md` | Grading rubric, output template, MCP scripts — used by both Cursor and Claude skills |
+| `.cursor/skills/figma-atomic-audit/` | Cursor skill for auditing Figma components |
+| `.claude/commands/figma-atomic-audit.md` | Claude skill for auditing Figma components |
 
 ## Context
 
@@ -24,13 +29,14 @@ Tokens → Components (≤30) → Patterns (≤15) → Templates (product files 
 
 ## Running audits
 
-Use `/figma-atomic-audit` (`.claude/commands/figma-atomic-audit.md`) when auditing a Figma component. It requires the Figma Desktop Bridge MCP (`figma-console` server) to be connected.
+Use `/figma-atomic-audit` when auditing a Figma component. It requires the Figma Desktop Bridge MCP (`figma-console` server) to be connected.
 
-Audit output is written as markdown in the repo root. Cross-link new deep-dives from `deliver/audit-summary.md`.
+Audit output is written to `audits/{component-slug}-audit.md`. Cross-link new deep-dives from `deliver/audit-summary.md`.
 
 ## Conventions
 
-- Audit files live at repo root (e.g., `tabs-audit.md`, `page-mock-audit.md`)
+- Audit files go in `audits/` (e.g. `audits/filter-group-audit.md`)
 - Deliverables (stakeholder-facing docs, images) go in `deliver/`
-- No `.discarded/` folder — ignore it
+- Shared skill reference material goes in `audit-automation/`
+- Ignore `.discarded/`
 - Figma node IDs use colon format (`36:3634`); URLs use dash format (`36-3634`) — convert when calling MCP tools

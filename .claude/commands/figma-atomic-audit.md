@@ -5,7 +5,7 @@ Audit a Figma component or template against atomic design system principles for 
 ## Before you start
 
 1. Read context files if present: `deliver/audit-summary.md`, `deliver/initial-roadmap.md`
-2. Check existing deep-dives: `audits/tabs-audit.md`, `audits/page-mock-audit.md`
+2. Check existing deep-dives: `audits/untitled-ui-tabs-audit.md`, `audits/page-mock-audit.md`
 3. Confirm Figma Desktop Bridge is connected (`figma_get_status`). If not, ask the user to open the Desktop Bridge plugin before continuing — do not infer from screenshots alone.
 
 The user will provide a Figma URL or node ID. Convert URL format to MCP format: `node-id=36-3634` → `36:3634`.
@@ -106,7 +106,14 @@ Use the grading rubric in reference.md. Grade each criterion A–F, then derive 
 
 ## Step 8 — Write output
 
-Save as `{component-slug}-audit.md` in repo root (e.g. `filter-group-audit.md`). Use the output template from reference.md.
+Derive the filename from the **actual Figma component name** returned by the Bridge (the `name` field from `figma_get_component_for_development_deep` or `figma_execute`):
+
+1. Take the component name exactly as Figma reports it (e.g. `"Filter group"`, `"Page header"`, `"Tabs"`)
+2. Lowercase and hyphenate: `"Filter group"` → `filter-group`
+3. Append `-audit.md`: `filter-group-audit.md`
+4. Write to **`audits/{filename}`** (e.g. `audits/filter-group-audit.md`)
+
+Use the output template from reference.md. Do not guess a name from the URL or the user's prompt — use the name the Bridge returns.
 
 ---
 
@@ -115,7 +122,7 @@ Save as `{component-slug}-audit.md` in repo root (e.g. `filter-group-audit.md`).
 Add the new audit to the deep-dives list in `deliver/audit-summary.md`:
 
 ```markdown
-**Example deep-dives:** [tabs-audit.md](../audits/tabs-audit.md) · [page-mock-audit.md](../audits/page-mock-audit.md) · [{new}.md](../audits/{new}.md)
+**Example deep-dives:** [untitled-ui-tabs-audit.md](../audits/untitled-ui-tabs-audit.md) · [page-mock-audit.md](../audits/page-mock-audit.md) · [{component-slug}-audit.md](../audits/{component-slug}-audit.md)
 ```
 
 ---

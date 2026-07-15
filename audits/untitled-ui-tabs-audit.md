@@ -284,7 +284,7 @@ React demos include a **mobile native select fallback** (`SelectNative` hidden o
 **Recommended reuse path:**
 
 1. Use React source as **API reference** (not Figma variants)
-2. Rebuild Figma component with **≤16 variants** (see §9)
+2. Rebuild Figma component with **≤16 variants** (see 9)
 3. Publish **decision tree** for type selection
 4. Keep Untitled Figma tabs in reference file only
 

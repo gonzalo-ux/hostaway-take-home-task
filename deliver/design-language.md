@@ -46,7 +46,7 @@ Raw scale values. Not used directly in components — always aliased through sem
 | `color/palette/neutral/800` | `#1E2939` | |
 | `color/palette/neutral/900` | `#101828` | Darkest neutral |
 
-> **Note:** There is a consistent typo in the Figma variable names: `backgorund` (missing 'r'). This appears across all background tokens and must be corrected before a code export or token pipeline is set up. Treat `backgorund` as `background` throughout this document.
+> **Note — Figma variable name typo:** The actual variable names in Figma are spelled `backgorund` (transposed 'r') across all background tokens (e.g. `color/backgorund/primary`). This document and all code mappings in [audiences-usage.md](../audiences-usage.md) use the correct spelling `background`. **Before running any token export or sync pipeline, the Figma variable names must be manually corrected in Figma** (Figma → Variables panel → rename each `backgorund` group to `background`). Until then, any generated CSS or token file will carry the typo.
 
 ### 2.2 Semantic Color Tokens
 
@@ -193,13 +193,13 @@ Components follow a three-tier naming convention:
 | Type | Fill | Text color | Border |
 |---|---|---|---|
 | Primary | `color/background/primary` → `#44A29F` | `color/text/inverse` → `#FFFFFF` | none |
-| Secondary | `color/background/secondary` → `#CCE6E6` | — | — |
-| Ghost | — | — | — |
+| Secondary | `color/background/secondary` → `#CCE6E6` | `color/text/interactive` → `#237472` | none |
+| Ghost | transparent (no fill) | `color/text/interactive` → `#237472` | none |
 
 **Layout:** Horizontal, `padding: 12px 16px`, `gap: 4px`, center-aligned both axes
 **Size:** 150×44px (all variants)
 **Corner radius:** 999px (pill)
-**Icon:** 20×20, color bound to `color/icon/inverse`
+**Icon:** 20×20. Color differs by type: Primary → `color/icon/inverse` (`#FFFFFF`); Secondary and Ghost → `color/icon/interactive` (`#237472`).
 
 **Props:**
 | Prop | Type | Default |
@@ -447,11 +447,6 @@ Template / Table + pagination
 | **Text styles** | No Figma text styles defined. Two font families (Raleway, Open Sans) with no formal scale. |
 | **Dark mode** | Single mode only. Token naming is ready for a second mode but none exists. |
 | **Collection naming** | Variable collection is called "Collection 1" — needs a proper name before any code export. |
-| **Typo in token names** | `backgorund` should be `background` across all background tokens. Fix before pipeline. |
-| **Pagination** | Referenced in templates, not published as a component. |
-| **Filter group** | Observed in template, not published as a standalone component. |
-| **Dropdown** | `_Dropdown.Button` exists but no public `Dropdown` component is published. |
-| **Breadcrumbs** | `_Breadcrumbs.Label` exists; no public `Breadcrumbs` molecule. |
 | **Error / validation states** | No error color tokens, no error state on `Input field`. |
 | **Focus / disabled states** | No focus ring or disabled variant on any component. |
 | **Semantic status colors** | No success, warning, or error palette tokens. |

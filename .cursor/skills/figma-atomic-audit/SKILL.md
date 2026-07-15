@@ -15,7 +15,7 @@ Audit Figma nodes for compositional depth, slot contracts, variant governance, a
 ## Before you start
 
 1. Read parent context if present: [audit-summary.md](../../deliver/audit-summary.md)
-2. Check for existing deep-dives: [tabs-audit.md](../../audits/tabs-audit.md), [page-mock-audit.md](../../audits/page-mock-audit.md)
+2. Check for existing deep-dives: [untitled-ui-tabs-audit.md](../../audits/untitled-ui-tabs-audit.md), [page-mock-audit.md](../../audits/page-mock-audit.md)
 3. Confirm Figma Desktop Bridge is paired (`user-figma-console`). If auth fails, ask user to pair via `figma_pair_plugin` — do not guess from screenshots alone.
 
 ## Workflow
@@ -124,7 +124,7 @@ Use the template in [Figma Atomic Audit — Reference](../../audit-automation/Fi
 When creating a new deep-dive, add to [audit-summary.md](../../deliver/audit-summary.md) header:
 
 ```markdown
-**Example deep-dives:** [tabs-audit.md](../audits/tabs-audit.md) · [page-mock-audit.md](../audits/page-mock-audit.md) · [{new}.md](../audits/{new}.md)
+**Example deep-dives:** [untitled-ui-tabs-audit.md](../audits/untitled-ui-tabs-audit.md) · [page-mock-audit.md](../audits/page-mock-audit.md) · [{new}.md](../audits/{new}.md)
 ```
 
 Link related specs (e.g. table audits → other audit files in `audits/`).
@@ -149,4 +149,4 @@ const defs = node.componentPropertyDefinitions || {};
 ## Additional resources
 
 - Grading rubric, output template, MCP scripts: [Figma Atomic Audit — Reference](../../audit-automation/Figma%20Atomic%20Audit%20—%20Reference.md)
-- Example audits: [tabs-audit.md](../../audits/tabs-audit.md), [page-mock-audit.md](../../audits/page-mock-audit.md)
+- Example audits: [untitled-ui-tabs-audit.md](../../audits/untitled-ui-tabs-audit.md), [page-mock-audit.md](../../audits/page-mock-audit.md)

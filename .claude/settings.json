@@ -10,10 +10,12 @@
       "mcp__figma-console__figma_get_design_system_summary",
       "mcp__figma-console__figma_get_styles",
       "Bash(find . -name *.md)",
-      "Bash(git remote *)"
+      "Bash(git remote *)",
+      "Bash(sed -i '' 's|tabs-audit\\\\.md|untitled-ui-tabs-audit.md|g' \\\\ *)"
     ],
     "additionalDirectories": [
-      ".claude/skills"
+      ".claude/skills",
+      "/Users/gonzalo.vasquez/Documents/work/github/personal/hostaway/.claude/commands"
     ]
   }
 }

@@ -219,7 +219,7 @@ return page.children
 |---|---|
 | Single organism | `{kebab-name}-audit.md` e.g. `filter-group-audit.md` |
 | Template + page mock | `page-mock-audit.md` or `{template-name}-audit.md` |
-| Atom/set | `{name}-audit.md` e.g. `tabs-audit.md` |
+| Atom/set | `{name}-audit.md` e.g. `untitled-ui-tabs-audit.md` |
 
 ---
 
