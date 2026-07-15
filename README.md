@@ -2,7 +2,7 @@
 
 A design system audit, language definition, and migration roadmap for Hostaway's product UI. The work spans a Figma component library, full token documentation, component audits, and a 6-month transition plan for a team moving from a lifted third-party kit to an owned system.
 
-**Figma file:** [Hostaway — Components page](https://www.figma.com/design/pAucTdmNvixw2TnIoLT2fe/Hostaway?node-id=10-2896)
+**Figma file:** [Hostaway — Components page](https://www.figma.com/design/pAucTdmNvixw2TnIoLT2fe/Hostaway---take-home-task?node-id=10-2896&t=pm7tbjUXBlMWIDDz-1)
 
 Contains the exploration, Components designs and the Multi-filter challenge
 
