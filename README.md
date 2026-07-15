@@ -4,6 +4,8 @@ A design system audit, language definition, and migration roadmap for Hostaway's
 
 **Figma file:** [Hostaway — Components page](https://www.figma.com/design/pAucTdmNvixw2TnIoLT2fe/Hostaway?node-id=10-2896)
 
+Contains the exploration, Components designs and the Multi-filter challenge
+
 ---
 
 ## What was the problem
