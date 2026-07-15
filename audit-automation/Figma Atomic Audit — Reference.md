@@ -32,7 +32,7 @@ Score each criterion A–F, then derive overall grade.
 **Context:** [Components page]({context_url}) — if applicable  
 **Audit lens:** Atomic design system architecture  
 **Date:** {month year}  
-**Parent audit:** [audit-summary.md](../deliver/audit-summary.md)  
+**Parent audit:** [audit-untitled-ui.md](../deliver/audit-untitled-ui.md)  
 **Related:** {links to related deep-dives}  
 **Methodology:** Live Figma Desktop Bridge — layer tree, properties, bindings, screenshots.
 
@@ -91,7 +91,7 @@ Score each criterion A–F, then derive overall grade.
 
 ## 6. Comparison to anti-patterns
 
-{Table vs audit-summary.md lift patterns}
+{Table vs audit-untitled-ui.md lift patterns}
 
 ---
 

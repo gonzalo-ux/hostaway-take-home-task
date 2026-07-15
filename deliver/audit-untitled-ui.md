@@ -79,9 +79,9 @@ Untitled UI PRO VARIABLES has a proper three-tier model: **primitives → semant
 - Figma aliases have no 1:1 map to code (React uses separate Tailwind token names)
 - No abstraction to JSON/TOML + transformation tool (e.g., Style Dictionary) to manage the mapping
 
-![Figma component token bindings](../img/token-map-1.png)
+![Figma component token bindings](img/token-map-1.png)
 
-![CSS background color token aliases](../img/token-map-2.png)
+![CSS background color token aliases](img/token-map-2.png)
 
 ---
 

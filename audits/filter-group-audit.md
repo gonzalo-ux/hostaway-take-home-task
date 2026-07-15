@@ -3,7 +3,7 @@
 **Subject:** [Filter group](https://www.figma.com/design/pAucTdmNvixw2TnIoLT2fe/Hostaway?node-id=45-4644)  
 **Audit lens:** Atomic design system architecture  
 **Date:** July 2026  
-**Parent audit:** [audit-summary.md](../deliver/audit-summary.md)  
+**Parent audit:** [audit-untitled-ui.md](../deliver/audit-untitled-ui.md)  
 **Related:** [page-mock-audit.md](./page-mock-audit.md) · [untitled-ui-tabs-audit.md](./untitled-ui-tabs-audit.md)  
 **Methodology:** Live Figma Desktop Bridge — layer tree, properties, bindings, screenshots.
 
@@ -149,7 +149,7 @@ All leaf atoms follow the convention: `_Input.Label`, `_Input.Field`, `_Input.Te
 
 ## 5. Comparison to anti-patterns
 
-| Anti-pattern (from audit-summary.md) | Present? | Evidence |
+| Anti-pattern (from audit-untitled-ui.md) | Present? | Evidence |
 |---|---|---|
 | Monolithic block with content variants instead of slots | ❌ | Slots used correctly |
 | Detached frames where instances should be used | ❌ | All leaf nodes are instances |

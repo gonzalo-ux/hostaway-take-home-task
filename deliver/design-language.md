@@ -108,27 +108,22 @@ Observed values in use:
 
 ### 2.4 Typography
 
-> **TBD:** No Figma text styles are defined. Two distinct font families are in use across components (see below). A full type scale with defined styles is needed before the system can be considered complete.
+> **TBD:** No Figma text styles are defined. A full type scale with defined styles is needed before the system can be considered complete.
 
-**Font families observed:**
-
-| Family | Usage |
-|---|---|
-| **Raleway** | Headings (`Heading 1`, `Heading 2`), all interactive labels (Button, Tab, Input label, Input text) |
-| **Open Sans** | Table data — header labels and cell labels |
+**Font family:** Open Sans throughout (single typeface).
 
 **Type values observed in components:**
 
 | Role | Family | Style | Size | Token |
 |---|---|---|---|---|
-| Heading 1 | Raleway | Bold | 34px | — |
-| Heading 2 | Raleway | — | ~28px | — |
-| Label (small) | Raleway | — | 18px | — |
-| Body / Prominence4 | Raleway | — | 20px | — |
-| Button label | Raleway | SemiBold | 16px | — |
-| Tab label | Raleway | SemiBold | 14px | — |
-| Input label | Raleway | Medium | 14px | — |
-| Input text | Raleway | Medium | 14px | — |
+| Heading 1 | Open Sans | Bold | 34px | — |
+| Heading 2 | Open Sans | — | ~28px | — |
+| Label (small) | Open Sans | — | 18px | — |
+| Body / Prominence4 | Open Sans | — | 20px | — |
+| Button label | Open Sans | SemiBold | 16px | — |
+| Tab label | Open Sans | SemiBold | 14px | — |
+| Input label | Open Sans | Medium | 14px | — |
+| Input text | Open Sans | Medium | 14px | — |
 | Table header | Open Sans | Bold | 14px | — |
 | Table cell | Open Sans | Regular | 14px | — |
 
@@ -254,10 +249,10 @@ Assembly of two private parts:
 
 ```
 Input field (VERTICAL, gap: 4px)
-├── _Input.Label      — "Input label", Raleway Medium 14px, color/text/primary
+├── _Input.Label      — "Input label", Open Sans Medium 14px, color/text/primary
 └── _Input.Field      — fill: color/background/default, stroke: color/border/secondary (1px), radius: 4px
     ├── Prefix frame  — 20×20 icon slot (boolean toggle)
-    └── _Input.Text field — Raleway Medium 14px, color/text/primary
+    └── _Input.Text field — Open Sans Medium 14px, color/text/primary
 ```
 
 **Input field container layout:** Horizontal, `padding: 12px`, `gap: 8px`
@@ -326,7 +321,7 @@ Page header (VERTICAL, padding: 16px 32px, gap: 28px)  — fill: color/backgroun
 │   └── Pages slot (HORIZONTAL, gap: 4px)
 │       └── _Breadcrumbs.Label instances + chevron icons
 ├── Frame 39 (HORIZONTAL, gap: 24px)
-│   ├── Text instance (Heading 1, Raleway Bold 34px, color/text/primary)
+│   ├── Text instance (Heading 1, Open Sans Bold 34px, color/text/primary)
 │   └── Actions slot (HORIZONTAL, gap: 12px)  — accepts Button, max 4
 └── Tabs group instance (fill: color/background/select light, radius: 8px)
     └── Tabs slot → _Tab.Button instances
@@ -444,7 +439,7 @@ Template / Table + pagination
 | Gap | Notes |
 |---|---|
 | **Spacing tokens** | No spacing/sizing variables. Values are hardcoded in component layouts. |
-| **Text styles** | No Figma text styles defined. Two font families (Raleway, Open Sans) with no formal scale. |
+| **Text styles** | No Figma text styles defined. Open Sans used throughout with no formal scale. |
 | **Dark mode** | Single mode only. Token naming is ready for a second mode but none exists. |
 | **Collection naming** | Variable collection is called "Collection 1" — needs a proper name before any code export. |
 | **Error / validation states** | No error color tokens, no error state on `Input field`. |

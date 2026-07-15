@@ -4,7 +4,7 @@ Audit a Figma component or template against atomic design system principles for 
 
 ## Before you start
 
-1. Read context files if present: `deliver/audit-summary.md`, `deliver/initial-roadmap.md`
+1. Read context files if present: `deliver/audit-untitled-ui.md`, `deliver/migration-roadmap.md`
 2. Check existing deep-dives: `audits/untitled-ui-tabs-audit.md`, `audits/page-mock-audit.md`
 3. Confirm Figma Desktop Bridge is connected (`figma_get_status`). If not, ask the user to open the Desktop Bridge plugin before continuing — do not infer from screenshots alone.
 
@@ -21,7 +21,7 @@ The user will provide a Figma URL or node ID. Convert URL format to MCP format: 
 - [ ] Step 6: Screenshot for visual verification
 - [ ] Step 7: Score (rubric in reference.md)
 - [ ] Step 8: Write audit markdown (template in reference.md)
-- [ ] Step 9: Cross-link from deliver/audit-summary.md
+- [ ] Step 9: Cross-link from deliver/audit-untitled-ui.md
 ```
 
 ---
@@ -80,7 +80,7 @@ Use the **Orphan property detection** script from reference.md to surface orphan
 
 ## Step 5 — Anti-patterns (flag any present)
 
-From `deliver/audit-summary.md`:
+From `deliver/audit-untitled-ui.md`:
 
 - Monolithic block with content variants instead of slots
 - Detached frames where instances should be used
@@ -119,7 +119,7 @@ Use the output template from reference.md. Do not guess a name from the URL or t
 
 ## Step 9 — Cross-link
 
-Add the new audit to the deep-dives list in `deliver/audit-summary.md`:
+Add the new audit to the deep-dives list in `deliver/audit-untitled-ui.md`:
 
 ```markdown
 **Example deep-dives:** [untitled-ui-tabs-audit.md](../audits/untitled-ui-tabs-audit.md) · [page-mock-audit.md](../audits/page-mock-audit.md) · [{component-slug}-audit.md](../audits/{component-slug}-audit.md)

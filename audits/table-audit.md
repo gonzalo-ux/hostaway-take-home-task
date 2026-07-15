@@ -58,7 +58,7 @@ Table  [COMPONENT — Organism]
 
 **Nesting depth:** 4 levels (organism → slot → column instance → atom). Within atomic budget.
 
-**Font note:** `Open Sans` throughout (header Bold 14, cell Regular 14). The Filter group uses `Raleway`. Cross-organism font inconsistency — system-level typography token concern, not a component-level finding.
+**Font note:** `Open Sans` throughout (header Bold 14, cell Regular 14) — consistent with all other components in the system.
 
 ---
 

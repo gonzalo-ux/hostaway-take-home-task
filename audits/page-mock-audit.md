@@ -4,7 +4,7 @@
 **Context:** [Components page](https://www.figma.com/design/pAucTdmNvixw2TnIoLT2fe/Hostaway?node-id=10-2896)  
 **Audit lens:** Atomic design system architecture — composition depth, slot contracts, template API honesty  
 **Date:** July 2026  
-**Parent audit:** [Audit summary](../deliver/audit-summary.md)  
+**Parent audit:** [Audit — Untitled UI](../deliver/audit-untitled-ui.md)  
 
 **Methodology:** Live Figma Desktop Bridge — layer tree, component properties, bindings, screenshots. Re-checked after template cleanup.
 
@@ -160,7 +160,7 @@ Template / Page table
 | Detach to change layout | Configure via props and slot content |
 | No published atoms below | Full atom → molecule → organism chain |
 
-This template demonstrates the **compose-don't-lift** principle from [audit-summary.md](../deliver/audit-summary.md).
+This template demonstrates the **compose-don't-lift** principle from [audit-untitled-ui.md](../deliver/audit-untitled-ui.md).
 
 ---
 

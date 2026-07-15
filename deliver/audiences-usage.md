@@ -53,7 +53,7 @@ The general pattern for any slot-driven component: find the slot in the instance
 
 ### How to create a new component (contributing to the library)
 
-The contribution process has two tracks — see [migration-roadmap.md Phase 1](../migration-roadmap.md#phase-1--build-the-infrastructure-weeks-310) for the full model. In brief:
+The contribution process has two tracks — see [migration-roadmap.md Phase 1](./migration-roadmap.md#phase-1--build-the-infrastructure-weeks-310) for the full model. In brief:
 
 - **Track A (DS-led):** New core components. Full contract before publish — anatomy, slot/prop table, interactive states, variant budget, one do/don't, owner and version. Async review via Figma branch, no meeting required.
 - **Track B (Squad-contributed):** New patterns that compose from existing Core components. DS lead reviews and merges within 48 hours, or returns with specific feedback.
@@ -72,7 +72,7 @@ Before building from scratch, check: does the concept already exist as a private
 
 Never apply a palette primitive directly to a layer (e.g. don't bind a fill directly to `color/palette/green/500`). Always go through a semantic token (`color/background/primary`). This is what allows theme changes and future dark mode to work without touching components.
 
-When you find a fill that isn't variable-bound (no purple/green diamond in the fill picker), that is a defect. File it or fix it. Once the automated audit is running (see [migration-roadmap.md Phase 1 — Token pipeline](../migration-roadmap.md#token-pipeline)), a lint rule will catch hardcoded fills automatically on every published component.
+When you find a fill that isn't variable-bound (no purple/green diamond in the fill picker), that is a defect. File it or fix it. Once the automated audit is running (see [migration-roadmap.md Phase 1 — Token pipeline](./migration-roadmap.md#token-pipeline)), a lint rule will catch hardcoded fills automatically on every published component.
 
 ### What's off-limits
 
@@ -171,7 +171,7 @@ Styles — Primary:
   border-radius: 999px
   padding:       12px 16px
   gap:           4px
-  font-family:   Raleway
+  font-family:   Open Sans
   font-weight:   600
   font-size:     16px
 ```
@@ -195,7 +195,7 @@ Tab button (idle):
   background:    var(--color-background-select-light)
   border-radius: 4px
   padding:       8px 12px
-  font:          Raleway SemiBold 14px
+  font:          Open Sans SemiBold 14px
   color:         var(--color-text-interactive)
 
 Tab button (selected):
@@ -214,9 +214,9 @@ Props:
   icon?:       ReactNode    // icon instance
 
 Outer layout:    vertical, gap 4px
-Label:           Raleway Medium 14px, color/text/primary
+Label:           Open Sans Medium 14px, color/text/primary
 Field container: border 1px var(--color-border-secondary), radius 4px, padding 12px, gap 8px
-Field text:      Raleway Medium 14px, color/text/primary
+Field text:      Open Sans Medium 14px, color/text/primary
 ```
 
 #### Table
@@ -262,7 +262,7 @@ Props:
   actions?:      ReactNode           // Actions slot (max 4 Button)
 
 Outer layout:  vertical, padding 16px 32px, gap 28px
-Title:         Raleway Bold 34px, color/text/primary
+Title:         Open Sans Bold 34px, color/text/primary
 Actions gap:   12px between buttons
 ```
 
@@ -280,14 +280,11 @@ Every Figma slot maps to a React `children` prop or a named render prop. The slo
 
 ### Typography implementation note
 
-Two font families are in use. Make sure both are loaded:
+One font family throughout — Open Sans. Load it once:
 
 ```css
-/* Raleway — UI chrome, buttons, inputs, headings */
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap');
-
-/* Open Sans — table data only */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+/* Open Sans — all UI text */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
 ```
 
 ### Design-to-code linking
@@ -304,7 +301,7 @@ If Code Connect doesn't cover the stack (e.g. a non-supported framework, a propr
 
 ### Contributing a code component
 
-When a Figma component is rebuilt and ready to ship, the engineering side of the contribution follows this checklist — see [migration-roadmap.md Phase 2 — Per-component workflow](../migration-roadmap.md#phase-2--rebuild-and-migrate-weeks-724) for the full process:
+When a Figma component is rebuilt and ready to ship, the engineering side of the contribution follows this checklist — see [migration-roadmap.md Phase 2 — Per-component workflow](./migration-roadmap.md#phase-2--rebuild-and-migrate-weeks-724) for the full process:
 
 1. Engineer reviews the slot/prop contract async before Figma branch merges.
 2. Component ships under a single import path (`@hostaway/ui` or equivalent) — enforced by ESLint from day one. No component-specific ad-hoc imports.
@@ -315,7 +312,7 @@ When a Figma component is rebuilt and ready to ship, the engineering side of the
 
 ### What is not in the system yet
 
-These are known gaps documented in `design-language.md`. Do not implement fallbacks or invent values — flag them as pending design. The [migration-roadmap.md Phase 2 rebuild sequence](../migration-roadmap.md#rebuild-sequence) defines when each layer (atoms → molecules → organisms) is scheduled.
+These are known gaps documented in `design-language.md`. Do not implement fallbacks or invent values — flag them as pending design. The [migration-roadmap.md Phase 2 rebuild sequence](./migration-roadmap.md#rebuild-sequence) defines when each layer (atoms → molecules → organisms) is scheduled.
 
 - Error / validation states on Input field
 - Focus styles (keyboard navigation)
@@ -390,14 +387,14 @@ When generating CSS, a style object, or a design token value:
 
 ```
 When generating text styles:
-  - Headings, labels, buttons, inputs → Raleway
-  - Table headers and cell text → Open Sans
+  - All text → Open Sans
   - Do not use any other font family unless explicitly adding to the system
 
 Font weight mapping:
-  Raleway Bold     → font-weight: 700  (Heading 1)
-  Raleway SemiBold → font-weight: 600  (Button, Tab)
-  Raleway Medium   → font-weight: 500  (Input label, Input text)
+  Open Sans Bold     → font-weight: 700  (Heading 1, table header)
+  Open Sans SemiBold → font-weight: 600  (Button, Tab)
+  Open Sans Medium   → font-weight: 500  (Input label, Input text)
+  Open Sans Regular  → font-weight: 400  (Table cell)
 
 No text style tokens exist yet → use raw values from 2.4 of design-language.md
 ```
@@ -448,7 +445,7 @@ An AI tool reading generated output can check for these signals that indicate so
 | Signal | What it means |
 |---|---|
 | Hex color not in the token table | Hardcoded value — replace with semantic token |
-| Font family other than Raleway or Open Sans | Outside the type system |
+| Font family other than Open Sans | Outside the type system |
 | `_`-prefixed component used as a top-level element | Using a private part directly |
 | A `Button` built from scratch (rect + text) | Component exists — use it |
 | A color variant not in `Button` (Primary/Secondary/Ghost) | Either wrong variant or missing state |
@@ -490,7 +487,7 @@ When an AI tool is asked to design something new that the current system cannot 
 | Which slots accept what | [design-language.md 5](./design-language.md#5-slot-reference) |
 | What's not built yet | [design-language.md 7](./design-language.md#7-known-gaps-tbd) |
 | How to extend the system | This file, Designers or AI Tooling |
-| Contribution process (Figma tracks, review SLAs, audit gate) | [migration-roadmap.md Phase 1](../migration-roadmap.md#phase-1--build-the-infrastructure-weeks-310) |
-| When gaps will be filled (rebuild sequence, migration waves) | [migration-roadmap.md Phase 2](../migration-roadmap.md#phase-2--rebuild-and-migrate-weeks-724) |
-| Token pipeline and lint rules | [migration-roadmap.md Token pipeline](../migration-roadmap.md#token-pipeline) |
-| Success metrics and checkpoints | [migration-roadmap.md Metrics](../migration-roadmap.md#metrics) |
+| Contribution process (Figma tracks, review SLAs, audit gate) | [migration-roadmap.md Phase 1](./migration-roadmap.md#phase-1--build-the-infrastructure-weeks-310) |
+| When gaps will be filled (rebuild sequence, migration waves) | [migration-roadmap.md Phase 2](./migration-roadmap.md#phase-2--rebuild-and-migrate-weeks-724) |
+| Token pipeline and lint rules | [migration-roadmap.md Token pipeline](./migration-roadmap.md#token-pipeline) |
+| Success metrics and checkpoints | [migration-roadmap.md Metrics](./migration-roadmap.md#metrics) |

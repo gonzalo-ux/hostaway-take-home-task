@@ -14,7 +14,7 @@ Audit Figma nodes for compositional depth, slot contracts, variant governance, a
 
 ## Before you start
 
-1. Read parent context if present: [audit-summary.md](../../deliver/audit-summary.md)
+1. Read parent context if present: [audit-untitled-ui.md](../../deliver/audit-untitled-ui.md)
 2. Check for existing deep-dives: [untitled-ui-tabs-audit.md](../../audits/untitled-ui-tabs-audit.md), [page-mock-audit.md](../../audits/page-mock-audit.md)
 3. Confirm Figma Desktop Bridge is paired (`user-figma-console`). If auth fails, ask user to pair via `figma_pair_plugin` — do not guess from screenshots alone.
 
@@ -31,7 +31,7 @@ Audit Progress:
 - [ ] Step 5: Check anti-patterns
 - [ ] Step 6: Screenshot for visual verification
 - [ ] Step 7: Score and write audit markdown
-- [ ] Step 8: Update cross-links in audit-summary.md if new deep-dive
+- [ ] Step 8: Update cross-links in audit-untitled-ui.md if new deep-dive
 ```
 
 ### Step 1: Identify atomic tier
@@ -80,7 +80,7 @@ For each component property:
 
 ### Step 5: Anti-patterns (flag any)
 
-From [audit-summary.md](../../deliver/audit-summary.md):
+From [audit-untitled-ui.md](../../deliver/audit-untitled-ui.md):
 
 - Monolithic block with content variants instead of slots
 - Detached frames where instances should be used
@@ -121,7 +121,7 @@ Use the template in [Figma Atomic Audit — Reference](../../audit-automation/Fi
 
 ### Step 8: Cross-links
 
-When creating a new deep-dive, add to [audit-summary.md](../../deliver/audit-summary.md) header:
+When creating a new deep-dive, add to [audit-untitled-ui.md](../../deliver/audit-untitled-ui.md) header:
 
 ```markdown
 **Example deep-dives:** [untitled-ui-tabs-audit.md](../audits/untitled-ui-tabs-audit.md) · [page-mock-audit.md](../audits/page-mock-audit.md) · [{new}.md](../audits/{new}.md)

@@ -45,7 +45,7 @@ Tabs group  [COMPONENT_SET — Molecule]
 │           │  fill → color/background/select / color/background/select light
 │           │  padding: 12/8/12/8px (hardcoded ⚠)
 │           │  minWidth: 116px
-│           └── "Tab label"  [TEXT — Raleway SemiBold 14/20]
+│           └── "Tab label"  [TEXT — Open Sans SemiBold 14/20]
 │                 fill → color/text/interactive
 │
 └── Width=Full  [COMPONENT]
@@ -58,7 +58,7 @@ Tabs group  [COMPONENT_SET — Molecule]
 
 **Nesting depth:** 3 levels (molecule → slot → atom). Well within atomic budget.
 
-**Font note:** Raleway SemiBold 14/20 throughout — consistent with Filter group. Table uses Open Sans. Cross-organism typography inconsistency is a system-level concern, not a finding for this component.
+**Font note:** Open Sans SemiBold 14/20 throughout — consistent with all other components in the system.
 
 ---
 
@@ -175,7 +175,7 @@ No anti-patterns present. This is among the cleanest component implementations i
 
 The rendered component (1264×112px) shows both variants stacked:
 
-- **Row 1 (Width=Auto, 684×44px):** 5 tab buttons, HUG-width container with teal (`color/background/select light`) background. First tab has stronger teal fill (Selected variant of `_Tab.Button`); remaining 4 are lighter (Idle). All labeled "Tab label" in Raleway SemiBold teal. 24px gap between buttons.
+- **Row 1 (Width=Auto, 684×44px):** 5 tab buttons, HUG-width container with teal (`color/background/select light`) background. First tab has stronger teal fill (Selected variant of `_Tab.Button`); remaining 4 are lighter (Idle). All labeled "Tab label" in Open Sans SemiBold teal. 24px gap between buttons.
 - **Row 2 (Width=Full, 1248×44px):** Same 5 tabs, each stretching to ~229px (FILL horizontal). Selected/Idle fill distinction preserved. Container spans full width.
 
 Clean alignment, consistent baseline, no overflow. `minChildren: 3` constraint is not visible in this default state — the 5 default children mask it entirely.

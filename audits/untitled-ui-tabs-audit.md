@@ -4,7 +4,7 @@
 **Related:** [Vertical tabs](https://www.untitledui.com/components/vertical-tabs) (2 components + 264 variants)  
 **Audit lens:** Design system architecture, Figma ↔ code parity, variant governance  
 **Date:** July 2026  
-**Parent audit:** [Audit summary](../deliver/audit-summary.md)  
+**Parent audit:** [Audit — Untitled UI](../deliver/audit-untitled-ui.md)  
 **Methodology:** Published inventory cross-referenced against open-source React implementation ([`tabs.tsx`](https://github.com/untitleduico/react/blob/main/components/application/tabs/tabs.tsx), [`tabs.demo.tsx`](https://github.com/untitleduico/react/blob/main/components/application/tabs/tabs.demo.tsx)). Live Figma node inspection blocked — preview file disables copy; REST/Desktop Bridge auth unavailable.
 
 ---

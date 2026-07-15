@@ -11,11 +11,17 @@
       "mcp__figma-console__figma_get_styles",
       "Bash(find . -name *.md)",
       "Bash(git remote *)",
-      "Bash(sed -i '' 's|tabs-audit\\\\.md|untitled-ui-tabs-audit.md|g' \\\\ *)"
+      "Bash(sed -i '' 's|tabs-audit\\\\.md|untitled-ui-tabs-audit.md|g' \\\\ *)",
+      "Bash(mv /Users/gonzalo.vasquez/Documents/work/github/personal/hostaway/img /Users/gonzalo.vasquez/Documents/work/github/personal/hostaway/deliver/img)",
+      "mcp__figma-console__figma_get_text_styles",
+      "Bash(xxd)",
+      "Bash(sed -i '' 's/Raleway SemiBold 14\\\\/20/Open Sans SemiBold 14\\\\/20/g' /Users/gonzalo.vasquez/Documents/work/github/personal/hostaway/audits/tabs-group-audit.md)",
+      "Bash(sed -i '' 's/Raleway SemiBold teal/Open Sans SemiBold teal/g' /Users/gonzalo.vasquez/Documents/work/github/personal/hostaway/audits/tabs-group-audit.md)"
     ],
     "additionalDirectories": [
       ".claude/skills",
-      "/Users/gonzalo.vasquez/Documents/work/github/personal/hostaway/.claude/commands"
+      "/Users/gonzalo.vasquez/Documents/work/github/personal/hostaway/.claude/commands",
+      "/Users/gonzalo.vasquez/Documents/work/github/personal/hostaway/img"
     ]
   }
 }

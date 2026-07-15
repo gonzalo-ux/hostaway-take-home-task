@@ -7,9 +7,9 @@ This repo is a **design system audit and roadmap workspace** — no application 
 | Path | Purpose |
 |---|---|
 | `deliver/` | Deliverables: audit summary, initial roadmap |
-| `img/` | Images referenced by audit documents |
-| `deliver/audit-summary.md` | Root-cause analysis of the Untitled UI lift |
-| `deliver/initial-roadmap.md` | 3–6 month transition plan (July–December 2026) |
+| `deliver/img/` | Images referenced by audit documents |
+| `deliver/audit-untitled-ui.md` | Root-cause analysis of the Untitled UI lift |
+| `deliver/migration-roadmap.md` | 3–6 month transition plan (July–December 2026) |
 | `audits/` | Component deep-dive audit files |
 | `audits/untitled-ui-tabs-audit.md` | Deep-dive spec for Tabs component rebuild |
 | `audits/page-mock-audit.md` | Reference implementation audit (A− pilot — Page header + Table + Filters) |
@@ -31,7 +31,7 @@ Tokens → Components (≤30) → Patterns (≤15) → Templates (product files 
 
 Use `/figma-atomic-audit` when auditing a Figma component. It requires the Figma Desktop Bridge MCP (`figma-console` server) to be connected.
 
-Audit output is written to `audits/{component-slug}-audit.md`. Cross-link new deep-dives from `deliver/audit-summary.md`.
+Audit output is written to `audits/{component-slug}-audit.md`. Cross-link new deep-dives from `deliver/audit-untitled-ui.md`.
 
 ## Conventions
 
