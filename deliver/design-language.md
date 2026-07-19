@@ -46,7 +46,6 @@ Raw scale values. Not used directly in components — always aliased through sem
 | `color/palette/neutral/800` | `#1E2939` | |
 | `color/palette/neutral/900` | `#101828` | Darkest neutral |
 
-> **Note — Figma variable name typo:** The actual variable names in Figma are spelled `backgorund` (transposed 'r') across all background tokens (e.g. `color/backgorund/primary`). This document and all code mappings in [audiences-usage.md](../audiences-usage.md) use the correct spelling `background`. **Before running any token export or sync pipeline, the Figma variable names must be manually corrected in Figma** (Figma → Variables panel → rename each `backgorund` group to `background`). Until then, any generated CSS or token file will carry the typo.
 
 ### 2.2 Semantic Color Tokens
 

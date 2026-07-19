@@ -147,7 +147,7 @@ Template / Page table
 1. **Hardwired organisms** — Header, Filter group, and Table are fixed children. Fine for one page type; consider region slots when a second template is needed (e.g. no filters, cards instead of table).
 2. **Filter `minChildren: 3`** — May force filler on sparse screens. Consider `minChildren: 0`.
 3. **Table organism placement** — `Table` shell (`50:6292`) lives outside the Table section listing alongside `_Table.Column`, `_Table.Header.Cell`, `_Table.Cell`.
-4. **Token typo** — `color/backgorund/default` should be `background`.
+4. **Token name** — `color/background/default`.
 
 ---
 
@@ -176,7 +176,6 @@ This template demonstrates the **compose-don't-lift** principle from [audit-unti
 - Add region slots to template when a second page layout appears
 - Relax filter slot `minChildren` if sparse filter rows are common
 - Surface `Table` organism in the Table section
-- Fix token naming typo (`backgorund` → `background`)
 
 ---
 

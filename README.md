@@ -36,7 +36,7 @@ The tabs audit was the diagnostic case: it shows exactly why the Untitled UI lif
 [deliver/design-language.md](deliver/design-language.md) is the canonical specification for the system as it stands today — not aspirational, but a precise record of what exists in the Figma file.
 
 It covers:
-- **Token system** — 16 palette primitives, 20 semantic aliases across background, text, border, and icon categories, with full hex values and usage rules. A known typo in the Figma variable names (`backgorund`) is flagged with a fix instruction.
+- **Token system** — 16 palette primitives, 20 semantic aliases across background, text, border, and icon categories, with full hex values and usage rules.
 - **Component inventory** — 8 component sets and 10 standalone components, each with variants, props, slot contracts, and layout specs.
 - **Assembly patterns** — how to compose a standard list page from `Template / Page table` down through slots.
 - **Known gaps** — spacing tokens, text styles, dark mode, error states, focus/disabled states. Documented as TBD so nothing gets invented to fill them.
