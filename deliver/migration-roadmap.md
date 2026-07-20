@@ -113,9 +113,9 @@ Don't publish an organism until the atoms beneath it are canonical.
 
 **Per-component workflow:**
 1. Run automated audit → get score and issues
-2. DS lead + squad designer review (30 min)
+2. DS lead + squad designer + engineer review (30 min)
 3. Rebuild in Figma branch
-4. Engineer reviews slot/prop contract (async)
+4. Design + Engineer aprobes slot/prop contract (async)
 5. Merge, publish, mark old asset Deprecated with "Use X instead"
 6. Squad validates on one real screen before old asset is removed
 
